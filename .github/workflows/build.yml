@@ -32,6 +32,7 @@ jobs:
     - uses: actions/checkout@v4
       with:
         repository: google/bindiff
+        ref: 156cc32a39863e8795fbbe05da113f005f72752b
         path: bindiff
 
     - uses: actions/checkout@v4
@@ -45,6 +46,12 @@ jobs:
       run: |
         cd binexport
         git apply ../patches/binexport-bdb8c4430549e69d4a9a7531c59b197f3a0757e6.patch
+
+    - name: Apply patch
+      shell: bash
+      run: |
+        cd bindiff
+        git apply ../patches/bindiff-d60ea72a412b01d92ebb2c820ec3ee41aa1febe5.patch
 
     - name: Install ninja-build tool
       uses: aseprite/get-ninja@main
