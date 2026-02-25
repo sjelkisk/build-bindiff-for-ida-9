@@ -21,7 +21,7 @@ jobs:
         include:
         - os: ubuntu-24.04
         - os: ubuntu-22.04
-        - os: macos-latest
+        - os: macos-15
         - os: macos-14
         - os: windows-2022
     runs-on: ${{ matrix.os }}
@@ -95,10 +95,10 @@ jobs:
       uses: MarkusJx/install-boost@v2
       id: install-boost
       with:
-        boost_version: 1.83.0
-        platform_version: ${{ matrix.os == 'windows-2022' && '2022' || matrix.os == 'ubuntu-24.04' && '22.04' || matrix.os == 'ubuntu-22.04' && '22.04' || matrix.os == 'macos-latest' && '15' || matrix.os == 'macos-14' && '13' }}
-        toolset: ${{ matrix.os == 'windows-2022' && 'msvc' || matrix.os == 'ubuntu-24.04' && 'gcc' || matrix.os == 'ubuntu-22.04' && 'gcc' || matrix.os == 'macos-latest' && 'clang' || matrix.os == 'macos-14' && 'clang' }}
-        arch: ${{ matrix.os == 'macos-14' && 'x86' || matrix.os == 'macos-latest' && 'aarch64' }}
+        boost_version: 1.86.0
+        platform_version: ${{ matrix.os == 'windows-2022' && '2022' || matrix.os == 'ubuntu-24.04' && '22.04' || matrix.os == 'ubuntu-22.04' && '22.04' || matrix.os == 'macos-15' && '15' || matrix.os == 'macos-14' && '13' }}
+        toolset: ${{ matrix.os == 'windows-2022' && 'msvc' || matrix.os == 'ubuntu-24.04' && 'gcc' || matrix.os == 'ubuntu-22.04' && 'gcc' || matrix.os == 'macos-15' && 'clang' || matrix.os == 'macos-14' && 'clang' }}
+        arch: ${{ matrix.os != 'macos-15' && 'x86' || matrix.os == 'macos-15' && 'aarch64' }}
 
     - name: Configure CMake
       shell: bash
