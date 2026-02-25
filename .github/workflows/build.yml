@@ -41,7 +41,13 @@ jobs:
         ref: bdb8c4430549e69d4a9a7531c59b197f3a0757e6
         path: binexport
 
-    - name: Apply patch
+    - name: Apply patch (bindiff)
+      shell: bash
+      run: |
+        cd bindiff
+        git apply ../patches/bindiff-d60ea72a412b01d92ebb2c820ec3ee41aa1febe5.patch
+
+    - name: Apply patch (binexport)
       shell: bash
       run: |
         cd binexport
