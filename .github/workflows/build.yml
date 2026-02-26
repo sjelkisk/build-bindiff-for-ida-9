@@ -8,10 +8,10 @@ on:
 
 env:
   BUILD_TYPE: Release
-  IDA_VERSION_FOR_ARTIFACT_NAME: "9.1.250226"
-  URL_TO_IDASDK_ZIP: https://vaclive.party/software/ida-pro/releases/download/9.1.250226/idasdk91.zip
-  SHA256_IDASDK_ZIP: 508f690e49ab0415a3f8d422826954ac8d3ae9b92f48121fcd1e53c68bc7e1f2
-  PATH_TO_IDASDK_CONTENT: idasdk91
+  IDA_VERSION_FOR_ARTIFACT_NAME: "9.3.260213"
+  URL_TO_IDASDK_ZIP: https://codeberg.org/exidot/ida/releases/download/9.3/idasdk9.3.zip
+  SHA256_IDASDK_ZIP: fc136a581f30ba08e70b490b6ece6dca13fa5d25a43c56c9ff3242bea2ae1522
+  PATH_TO_IDASDK_CONTENT: ida-sdk-9.3/src
 
 jobs:
   build:
@@ -22,7 +22,7 @@ jobs:
         - os: ubuntu-24.04
         - os: ubuntu-22.04
         - os: macos-15-intel
-        - os: macos-14
+        - os: macos-15
         - os: windows-2022
     runs-on: ${{ matrix.os }}
 
@@ -96,9 +96,9 @@ jobs:
       id: install-boost
       with:
         boost_version: 1.86.0
-        platform_version: ${{ matrix.os == 'windows-2022' && '2022' || matrix.os == 'ubuntu-24.04' && '22.04' || matrix.os == 'ubuntu-22.04' && '22.04' || matrix.os == 'macos-15-intel' && '13' || matrix.os == 'macos-14' && '14' }}
-        toolset: ${{ matrix.os == 'windows-2022' && 'msvc' || matrix.os == 'ubuntu-24.04' && 'gcc' || matrix.os == 'ubuntu-22.04' && 'gcc' || matrix.os == 'macos-15-intel' && 'clang' || matrix.os == 'macos-14' && 'clang' }}
-        arch: ${{ matrix.os != 'macos-14' && 'x86' || matrix.os == 'macos-14' && 'aarch64' }}
+        platform_version: ${{ matrix.os == 'windows-2022' && '2022' || matrix.os == 'ubuntu-24.04' && '22.04' || matrix.os == 'ubuntu-22.04' && '22.04' || matrix.os == 'macos-15-intel' && '13' || matrix.os == 'macos-15' && '15' }}
+        toolset: ${{ matrix.os == 'windows-2022' && 'msvc' || matrix.os == 'ubuntu-24.04' && 'gcc' || matrix.os == 'ubuntu-22.04' && 'gcc' || matrix.os == 'macos-15-intel' && 'clang' || matrix.os == 'macos-15' && 'clang' }}
+        arch: ${{ matrix.os != 'macos-15' && 'x86' || matrix.os == 'macos-15' && 'aarch64' }}
 
     - name: Configure CMake
       shell: bash
