@@ -84,13 +84,16 @@ jobs:
       run: |
         git apply ../patches/binexport-cmake.patch
 
+    - name: Setup uv (hcli)
+      if: matrix.idasdk.type == 'hcli'
+      uses: astral-sh/setup-uv@v7
+
     - name: Get idasdk (hcli)
       if: matrix.idasdk.type == 'hcli'
       shell: bash
       run: |
         mkdir idasdk
-        pip3 install --no-cache-dir --user ida-hcli
-        hcli download "${{ matrix.idasdk.hcli_tag }}"
+        uvx --from ida-hcli hcli --disable-updates download "${{ matrix.idasdk.hcli_tag }}"
         unzip -q "${{ matrix.idasdk.zip_filename }}" -d idasdk/
       env:
         HCLI_API_KEY: ${{ secrets.HCLI_API_KEY }}
