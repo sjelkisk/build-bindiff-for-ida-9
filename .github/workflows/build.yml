@@ -81,24 +81,13 @@ jobs:
         git apply ../patches/binexport-cmake.patch
 
     - name: Get idasdk (hcli)
-      if: matrix.idasdk.type == 'hcli' && matrix.os.type != 'windows'
+      if: matrix.idasdk.type == 'hcli'
       shell: bash
       run: |
         mkdir idasdk
-        curl -LsSf https://hcli.docs.hex-rays.com/install | sh
+        pip3 install --no-cache-dir --user ida-hcli
         hcli download "${{ matrix.idasdk.hcli_tag }}"
         unzip -q "${{ matrix.idasdk.zip_filename }}" -d idasdk/
-      env:
-        HCLI_API_KEY: ${{ secrets.HCLI_API_KEY }}
-
-    - name: Get idasdk (hcli, Windows)
-      if: matrix.idasdk.type == 'hcli' && matrix.os.type == 'windows'
-      shell: powershell
-      run: |
-        mkdir idasdk
-        iwr -useb https://hcli.docs.hex-rays.com/install.ps1 | iex
-        hcli download "${{ matrix.idasdk.hcli_tag }}"
-        Expand-Archive -Path "${{ matrix.idasdk.zip_filename }}" -DestinationPath idasdk\
       env:
         HCLI_API_KEY: ${{ secrets.HCLI_API_KEY }}
 
