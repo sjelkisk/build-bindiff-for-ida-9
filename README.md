@@ -2,6 +2,12 @@
 
 English | [简体中文](README.zh.md)
 
+[![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/Lil-Ran/build-bindiff-for-ida-9/total)](https://github.com/Lil-Ran/build-bindiff-for-ida-9/releases)
+[![GitHub Repo stars](https://img.shields.io/github/stars/Lil-Ran/build-bindiff-for-ida-9?style=flat)](https://github.com/Lil-Ran/build-bindiff-for-ida-9/stargazers)
+[![GitHub Release](https://img.shields.io/github/v/release/Lil-Ran/build-bindiff-for-ida-9)](https://github.com/Lil-Ran/build-bindiff-for-ida-9/releases)
+[![GitHub commits since latest release](https://img.shields.io/github/commits-since/Lil-Ran/build-bindiff-for-ida-9/latest)](https://github.com/Lil-Ran/build-bindiff-for-ida-9/commits/main/)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Lil-Ran/build-bindiff-for-ida-9/build.yml?branch=main&label=ci)](https://github.com/Lil-Ran/build-bindiff-for-ida-9/actions)
+
 This is an unofficial repository, just for convenience. The original source code is available at [Google's BinDiff repository](https://github.com/google/bindiff).
 
 Build logs and artifacts can be found in the [Actions tab](https://github.com/Lil-Ran/build-bindiff-for-ida-9/actions).
@@ -27,7 +33,7 @@ We build on these [GitHub-hosted runners](https://docs.github.com/en/actions/usi
 - ubuntu-22.04 *(for glibc 2.35 and above)*
 - macos-15 *(universal binary for both Apple silicon and Intel)*
 
-Ubuntu builds are compatible with most Linux distributions as long as they use the same or newer version of glibc.
+Ubuntu builds are compatible with most Linux distributions as long as they use the same or newer version of glibc (and other system libraries).
 
 ## Custom Build
 

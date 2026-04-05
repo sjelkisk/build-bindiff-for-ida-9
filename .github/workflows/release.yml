@@ -1,0 +1,59 @@
+name: release
+
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        required: true
+        type: number
+      title:
+        required: true
+        type: string
+      tag_name:
+        required: true
+        type: string
+      draft:
+        required: true
+        type: boolean
+      prerelease:
+        required: true
+        type: boolean
+        default: false
+      latest:
+        required: true
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download GitHub Artifacts
+        uses: actions/download-artifact@v8
+        with:
+          path: artifacts
+          skip-decompress: true
+          merge-multiple: true
+          run-id: ${{ github.event.inputs.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Release and Upload Assets
+        uses: softprops/action-gh-release@153bb8e04406b158c6c84fc1615b65b24149a1fe # v2.6.1
+        with:
+          working_directory: artifacts
+          files: |
+            *
+          fail_on_unmatched_files: true
+          draft: ${{ github.event.inputs.draft }}
+          prerelease: ${{ github.event.inputs.prerelease }}
+          make_latest: ${{ github.event.inputs.latest }}
+          name: ${{ github.event.inputs.title }}
+          tag_name: ${{ github.event.inputs.tag_name }}
+          body: |
+            Refer to README.md for guidance on selecting and installing the version.
+
+            These artifacts are built here: https://github.com/Lil-Ran/build-bindiff-for-ida-9/actions/runs/${{ github.event.inputs.run_id }}
+          token: ${{ secrets.GITHUB_TOKEN }}

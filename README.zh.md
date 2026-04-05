@@ -2,6 +2,12 @@
 
 [English](README.md) | 简体中文
 
+[![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/Lil-Ran/build-bindiff-for-ida-9/total)](https://github.com/Lil-Ran/build-bindiff-for-ida-9/releases)
+[![GitHub Repo stars](https://img.shields.io/github/stars/Lil-Ran/build-bindiff-for-ida-9?style=flat)](https://github.com/Lil-Ran/build-bindiff-for-ida-9/stargazers)
+[![GitHub Release](https://img.shields.io/github/v/release/Lil-Ran/build-bindiff-for-ida-9)](https://github.com/Lil-Ran/build-bindiff-for-ida-9/releases)
+[![GitHub commits since latest release](https://img.shields.io/github/commits-since/Lil-Ran/build-bindiff-for-ida-9/latest)](https://github.com/Lil-Ran/build-bindiff-for-ida-9/commits/main/)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Lil-Ran/build-bindiff-for-ida-9/build.yml?branch=main&label=ci)](https://github.com/Lil-Ran/build-bindiff-for-ida-9/actions)
+
 这是一个非官方仓库，仅为方便使用。原始源码位于 [Google 的 BinDiff 仓库](https://github.com/google/bindiff)。
 
 构建日志和产物可在 [Actions 页面](https://github.com/Lil-Ran/build-bindiff-for-ida-9/actions) 查看。
@@ -27,7 +33,7 @@
 - ubuntu-22.04 _(适用于 glibc 2.35 及以上)_
 - macos-15 _(构建可用于 Apple silicon 和 Intel 的通用二进制文件)_
 
-Ubuntu 构建文件兼容大多数 Linux 发行版，只要它们使用相同或更高版本的 glibc。
+Ubuntu 构建文件兼容大多数 Linux 发行版，只要它们使用相同或更高版本的 glibc（以及其他系统库）。
 
 ## 自定义构建
 

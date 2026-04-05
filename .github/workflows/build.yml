@@ -19,16 +19,16 @@ jobs:
         os:
           - label: ubuntu-24.04
             type: linux
-            artifacts_suffix: "x86_64-linux-glibc_2.39"
+            artifacts_suffix: "x86_64-Linux-built_on_Ubuntu_24.04"
           - label: ubuntu-22.04
             type: linux
-            artifacts_suffix: "x86_64-linux-glibc_2.35"
+            artifacts_suffix: "x86_64-Linux-built_on_Ubuntu_22.04"
           - label: macos-15
             type: macos
-            artifacts_suffix: "universal-macos"
+            artifacts_suffix: "universal-macOS"
           - label: windows-2025
             type: windows
-            artifacts_suffix: "x86_64-windows"
+            artifacts_suffix: "x86_64-Windows"
 
         idasdk:
           - version: "9.0"
@@ -155,7 +155,7 @@ jobs:
     - name: Upload Build Artifacts
       uses: actions/upload-artifact@v7
       with:
-        name: BinDiff-IDA_${{ matrix.idasdk.version }}-${{ matrix.os.artifacts_suffix }}
+        name: IDA_${{ matrix.idasdk.version }}-BinDiff-${{ matrix.os.artifacts_suffix }}
         path: |
           build/out/bindiff
           build/out/bindiff.exe
@@ -193,7 +193,7 @@ jobs:
     - name: Upload Build Artifacts (binexport)
       uses: actions/upload-artifact@v7
       with:
-        name: BinExport-IDA_${{ matrix.idasdk.version }}-${{ matrix.os.artifacts_suffix }}
+        name: IDA_${{ matrix.idasdk.version }}-BinExport-${{ matrix.os.artifacts_suffix }}
         path: |
           build/out/_deps/binexport-build/binaryninja/binexport*
           build/out/_deps/binexport-build/ida/binexport*
