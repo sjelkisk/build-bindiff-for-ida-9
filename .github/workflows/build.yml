@@ -20,32 +20,7 @@ jobs:
           - label: ubuntu-24.04
             type: linux
             artifacts_suffix: "x86_64-Linux-built_on_Ubuntu_24.04"
-          - label: ubuntu-22.04
-            type: linux
-            artifacts_suffix: "x86_64-Linux-built_on_Ubuntu_22.04"
-          - label: macos-15
-            type: macos
-            artifacts_suffix: "universal-macOS"
-          - label: windows-2025
-            type: windows
-            artifacts_suffix: "x86_64-Windows"
-
         idasdk:
-          - version: "9.0"
-            type: hcli
-            hcli_tag: "release/9.0/sdk-and-utilities/idasdk90.zip"
-            zip_filename: "idasdk90.zip"
-            subdir: "idasdk90"
-          - version: "9.1"
-            type: hcli
-            hcli_tag: "release/9.1/sdk-and-utilities/idasdk91.zip"
-            zip_filename: "idasdk91.zip"
-            subdir: "idasdk91"
-          - version: "9.2"
-            type: hcli
-            hcli_tag: "release/9.2/sdk-and-utilities/idasdk92.zip"
-            zip_filename: "idasdk92.zip"
-            subdir: "src"
           - version: "9.3"
             type: oss
             repo_tag: "v9.3"
